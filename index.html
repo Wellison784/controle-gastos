@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle de Gastos</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.png">
+<!-- 🔥 CDN QUE FUNCIONOU NO TESTE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="menu-topo">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div id="menu-opcoes" class="menu-opcoes">
+        <button onclick="definirSalario()">💾 Salvar</button>
+        <button onclick="limparDados()">🧹 Limpar</button>
+        <button onclick="imprimirRelatorio()">🖨️ Imprimir</button>
+        <button onclick="exportarPDF()">📄 PDF</button>
+    </div>
+</div>
+<!-- SALÁRIO -->
+<div class="tela ativa" id="tela-salario">
+    <h2>💰 Salário</h2>
+
+    <input type="number" id="salario" placeholder="Digite seu salário">
+
+    <select id="mes">
+        <option value="1">Janeiro</option>
+        <option value="2">Fevereiro</option>
+        <option value="3">Março</option>
+        <option value="4">Abril</option>
+        <option value="5">Maio</option>
+        <option value="6">Junho</option>
+        <option value="7">Julho</option>
+        <option value="8">Agosto</option>
+        <option value="9">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+    </select>
+
+    <input type="number" id="ano" placeholder="Ano (ex: 2026)">
+</div>
+
+<!-- GASTOS -->
+<div class="tela" id="tela-gastos">
+    <h2>➕ Adicionar Gasto</h2>
+
+    <input type="text" id="descricao" placeholder="Descrição">
+    <input type="number" id="valor" placeholder="Valor">
+
+    <select id="categoria"></select>
+
+    <button onclick="adicionarGasto()">Adicionar</button>
+    <button onclick="editarCategorias()">✏️ Editar Categorias</button>
+    <ul id="lista-gastos"></ul>
+</div>
+
+<!-- GRÁFICO -->
+<div class="tela" id="tela-grafico">
+    <h2>📊 Gráfico</h2>
+
+    <!-- 🔥 IMPORTANTE -->
+    <div style="height:300px;">
+        <canvas id="grafico"></canvas>
+    </div>
+</div>
+
+<!-- RESUMO -->
+<div class="tela" id="tela-resumo">
+    <h2>📋 Resumo</h2>
+    <p>Total: R$ <span id="total-gastos"></span></p>
+    <p>Saldo: R$ <span id="saldo"></span></p>
+    <p id="maior-gasto"></p>
+    
+</div>
+
+</div>
+
+<!-- MENU -->
+<div class="menu">
+    <button onclick="trocarTela('tela-salario')">💰</button>
+    <button onclick="trocarTela('tela-gastos')">➕</button>
+    <button onclick="trocarTela('tela-grafico')">📊</button>
+    <button onclick="trocarTela('tela-resumo')">📋</button>
+</div>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js")
+    .then(() => console.log("PWA ativo"))
+    .catch(err => console.log("Erro SW:", err));
+}
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

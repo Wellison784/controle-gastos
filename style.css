@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f0f2f5;
+}
+
+.container {
+    padding: 20px;
+    padding-bottom: 80px;
+}
+
+.topo {
+    display: flex;
+    gap: 10px;
+}
+
+.topo button {
+    flex: 1;
+    background: #2ecc71;
+    color: white;
+}
+
+.tela {
+    display: none;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    background: white;
+}
+
+.menu button {
+    flex: 1;
+    padding: 15px;
+    font-size: 20px;
+}
+
+/* 🔥 ESSENCIAL */
+#grafico {
+    width: 100% !important;
+    height: 300px !important;
+    background: white;
+    border-radius: 12px;
+}
+
+.menu-topo {
+    position: relative;
+}
+
+.menu-btn {
+    font-size: 22px;
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.menu-opcoes {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: white;
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.menu-opcoes button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: white;
+    text-align: left;
+}
+
+.menu-opcoes button:hover {
+    background: #f0f0f0;
+}
+
+.menu-opcoes.ativo {
+    display: block;
+}
